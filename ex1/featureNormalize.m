@@ -26,13 +26,16 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
-
-
-
-
-
-
-
+mu = mean(X)
+X_norm = X - repmat(mu, size(X,1), 1);
+%fprintf("New means\n");
+%fprintf('    x = [%10.1f %8.1f]\n', [X(1:10,:)]');
+%fprintf(' mean = [%10.1f %8.1f]\n', mean(X));
+sigma = std(X_norm)
+X_norm = X_norm ./ repmat(sigma, size(X_norm,1), 1);
+%fprintf('    x = [%6.3f %6.3f]\n', [X_norm(1:10,:)]');
+%fprintf('  std = [%6.3f %6.3f]\n', std(X));
+%fprintf(' mean = [%6.3f %6.3f]\n', mean(X));
 
 % ============================================================
 
