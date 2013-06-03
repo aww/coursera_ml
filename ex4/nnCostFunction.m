@@ -27,8 +27,8 @@ m = size(X, 1);
          
 % You need to return the following variables correctly 
 J = 0;
-Theta1_grad = zeros(size(Theta1));
-Theta2_grad = zeros(size(Theta2));
+Theta1_grad = zeros(size(Theta1)); % 25 x 401
+Theta2_grad = zeros(size(Theta2)); % 10 x 26
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
@@ -62,23 +62,25 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+a1 = [ones(1,m); X']; % 401 x m
+z2 = Theta1 * a1;     % 25 x m
+a2 = [ones(1,m); sigmoid(z2)]; % 26 x m
+z3 = Theta2 * a2; % 10 x m
+a3 = sigmoid(z3); % 10 x m
+yvec = zeros(num_labels, m); % 10 x m
+for i = 1:m
+  yvec(y(i),i)=1;
+endfor
+J = sum(sum(- yvec .* log(a3) - (1 - yvec) .* log(1 - a3))) / m;
+J += (lambda / (2*m)) * (sum(sumsq(Theta1(:,2:end))) + sum(sumsq(Theta2(:,2:end))));
 
+delta3 = a3 - yvec; % 10 x m
+delta2 = (Theta2' * delta3)(2:end,:) .* sigmoidGradient(z2); % 25 x m
+Theta2_grad = delta3 * a2' / m; % 10 x 26
+Theta1_grad = delta2 * a1' / m; % 25 x 401
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Theta2_grad += [zeros(num_labels       ,1), (lambda / m) * Theta2(:,2:end)];
+Theta1_grad += [zeros(hidden_layer_size,1), (lambda / m) * Theta1(:,2:end)];
 
 % -------------------------------------------------------------
 
