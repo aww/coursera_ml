@@ -21,7 +21,11 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+eX = ones(size(X,1),size(X,2));
+eC = ones(K,size(centroids,2));
+dist = sqrt(eX*centroids.^2' - 2*X*centroids' + X.^2*eC');
+[m,i] = min(dist');
+idx = i';
 
 
 
