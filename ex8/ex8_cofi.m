@@ -127,23 +127,30 @@ movieList = loadMovieList();
 my_ratings = zeros(1682, 1);
 
 % Check the file movie_idx.txt for id of each movie in our dataset
-% For example, Toy Story (1995) has ID 1, so to rate it "4", you can set
-my_ratings(1) = 4;
-
-% Or suppose did not enjoy Silence of the Lambs (1991), you can set
-my_ratings(98) = 2;
-
-% We have selected a few movies we liked / did not like and the ratings we
-% gave are as follows:
-my_ratings(7) = 3;
-my_ratings(12)= 5;
-my_ratings(54) = 4;
-my_ratings(64)= 5;
-my_ratings(66)= 3;
-my_ratings(69) = 5;
-my_ratings(183) = 4;
-my_ratings(226) = 5;
-my_ratings(355)= 5;
+my_ratings(239)  = 5; % Sneakers
+my_ratings(98)   = 4; % Silence of the Lambs
+my_ratings(7)    = 4; % Twelve Monkeys
+my_ratings(12)   = 3; % Usual Suspects
+my_ratings(54)   = 3; % Outbreak
+my_ratings(55)   = 4; % The Professional
+my_ratings(64)   = 4; % Shawshank
+my_ratings(69)   = 1; % Forrest Gump
+my_ratings(183)  = 4; % Alien
+my_ratings(176)  = 4; % Aliens
+my_ratings(226)  = 3; % Die Hard 2
+my_ratings(1127) = 2; % Truman Show
+my_ratings(515)  = 5; % Das Boot
+my_ratings(521)  = 4; % Deer Hunter
+my_ratings(305)  = 4; % The Ice Storm
+my_ratings(28)   = 3; % Apollo 13
+my_ratings(23)   = 4; % Taxi Driver
+my_ratings(22)   = 3; % Braveheart
+my_ratings(265)  = 5; % The Hunt For Red October
+my_ratings(50)   = 5; % Star Wars
+my_ratings(64)   = 4; % Shawshank Redemption
+my_ratings(272)  = 5; % Goodwill Hunting
+my_ratings(318)  = 4; % Schindler's List
+my_ratings(313)  = 3; % Titantic
 
 fprintf('\n\nNew user ratings:\n');
 for i = 1:length(my_ratings)
