@@ -26,7 +26,12 @@ for epsilon = min(pval):stepsize:max(pval)
 
 
 
-
+    truepositives  = sum((pval < epsilon) & yval);
+    falsepositives = sum((pval < epsilon) & (1 - yval));
+    falsenegatives = sum((pval >= epsilon) & yval);
+    precision = truepositives / (truepositives + falsepositives);
+    recall    = truepositives / (truepositives + falsenegatives);
+    F1 = 2 * precision * recall / (precision + recall);
 
 
 
