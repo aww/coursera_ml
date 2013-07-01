@@ -41,8 +41,10 @@ Theta_grad = zeros(size(Theta));
 %
 
 
-
-
+error = (X*Theta' - Y) .* R;
+J = 0.5 * (sum(sumsq(error)) + lambda * (sum(sumsq(Theta)) + sum(sumsq(X))));
+X_grad = error * Theta + lambda * X;
+Theta_grad = error' * X + lambda * Theta;
 
 
 
